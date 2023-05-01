@@ -1,0 +1,23 @@
+<div class="ui dimmer visible active" (click)="closeClick()">
+  <div (click)="$event.stopPropagation()" class="ui modal visible active">
+    <i class="close icon" (click)="closeClick()"> </i>
+    <div class="header">
+      <ng-content select="[modalTitle]"></ng-content>
+    </div>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+    <!-- html order is important for this to work. actions-default button MUST 
+      come after the resuable/custom i.e the ng-content button -->
+      <!--  whenever we want to use this trick, the default option must come 
+        directly after the one that uses ng-content in order for it to work correctly
+      Note don't forget to check the css file
+          -->
+    <div class="actions">
+      <ng-content select="[modalFooter]"></ng-content>
+    </div>
+    <div class="actions actions-default">
+      <button (click)="closeClick()">OK</button>
+    </div>
+  </div>
+</div>
